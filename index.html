@@ -6,20 +6,27 @@
   </head>
   <body>
 
-      <label> options
+      <label> Boss List
         <select name="dropdown" id="dropdown">
         </select>
       </label>
 
       <button id="submit" type="submit" name="button">submit</button>
       <div class="display"></div>
+      <div class="zoneDisplay"></div>
       <script id="template" type="text/x-handlebars-template">
           <p>Name: {{name}}</p>
           <p>Level: {{level}}</p>
           <p>Health: {{health}}</p>
-          <p>Description:{{description}}</p>
-          <p>Zone:{{zoneId}}</p>
-
+          <p>Description: {{description}}</p>
+          <!-- <p id="zoneTag">Zone:{{zoneData.name}}</p> -->
+      </script>
+      <script id="zoneTemplate" type="text/x-handlebars-template">
+          <p>Dungeon: {{name}}</p>
+          <p>Location: {{location.name}}</p>
+          <p>Dungeon Description: {{description}}</p>
+          <p>Recommended Level: {{advisedMinLevel}}-{{advisedMaxLevel}}</p>
+          <!-- <p id="zoneTag">Zone:{{zoneData.name}}</p> -->
       </script>
 
 
