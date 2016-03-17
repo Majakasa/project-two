@@ -9,7 +9,19 @@ var zoneDisplay = document.querySelector('.zoneDisplay');
 window.onload = function (){
 console.log("loaded");
 
+  function createRadioElement(elem, value, checked) {
+    for (var i = 0; i < bossData.bosses.length; i++) {
 
+      var name = bossData.bosses[i].name;
+    var input = document.createElement('input');
+        input.type = 'radio';
+        input.value = value;
+        if (checked) {
+            input.checked = 'checked';
+        }
+
+  elem.parentNode.insertBefore(input, elem.nextSibling);
+}
 
   var bossList = 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey='+ key;
   $.ajax({
@@ -49,7 +61,7 @@ console.log("loaded");
     }).done(function(zoneData){
       console.log('zone up');
       console.log(zoneData);
-      var html = zoneTemplate(zoneData);
+      var html = zoneTemplate( );
       zoneDisplay.innerHTML = html;
 
     })
