@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+      <label> options
+        <select name="dropdown" id="dropdown">
+        </select>
+      </label>
+
+      <button id="submit" type="submit" name="button">submit</button>
+      <div class="display"></div>
+      <script id="template" type="text/x-handlebars-template">
+          <p>Name: {{name}}</p>
+          <p>Level: {{level}}</p>
+          <p>Health: {{health}}</p>
+          <p>Description:{{description}}</p>
+          <p>Zone:{{zoneId}}</p>
+
+      </script>
+
+
+
+    <script type="text/javascript" src="key.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="main.js">
+
+    </script>
+  </body>
+</html>
