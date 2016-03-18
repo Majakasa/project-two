@@ -13,7 +13,7 @@ var levelDropdown = document.querySelector('#levelDropdown');
 
 // if(selected >= advisedMinLevel  selected = advisedMaxLevel)
 
-for (var i = 1; i < 101; i++) {
+for (var i = 15; i < 101; i++) {
 
   var name = i;
   var optionEl = document.createElement('option');
@@ -42,14 +42,41 @@ var selectedLevel = levelDropdown.value;
       optionEl.innerHTML = name;
       optionEl.value = zoneListData.zones[i].id;
       locationDropdown.appendChild(optionEl);
+      }
     }
-  }
 
   }).fail(function(zoneListData){
     console.log(zoneListData);
   }).always(function(zoneListData){
   })//ajax one
+})//level change event
+
+
+locationDropdown.addEventListener('change', function() {
+  console.log(locationDropdown.value);
+  dropdown.options.length = 0;
+
+  $.ajax({
+    url: 'https://us.api.battle.net/wow/zone/'+ locationDropdown.value +'?locale=en_US&apikey=' + key
+  }).done(function(zoneData){
+    console.log('zone up');
+    console.log(zoneData);
+    var html = zoneTemplate(zoneData);
+    zoneDisplay.innerHTML = html;
+      for (var i = 0; i < zoneData.bosses.length; i++) {
+        var name = zoneData.bosses[i].name;
+        var optionEl = document.createElement('option');
+        optionEl.innerHTML = name;
+        optionEl.value = zoneData.bosses[i].id;
+        dropdown.appendChild(optionEl);
+
+      }
+  })
 })
+
+
+
+
   var bossList = 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey='+ key;
   $.ajax({
     url: bossList
