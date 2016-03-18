@@ -8,8 +8,7 @@ var zoneTemplate = Handlebars.compile(rawZoneTemplate);
 var zoneDisplay = document.querySelector('.zoneDisplay');
 var levelDropdown = document.querySelector('#levelDropdown');
 
-window.onload = function (){
-console.log("loaded");
+
 
 
 // if(selected >= advisedMinLevel  selected = advisedMaxLevel)
@@ -23,8 +22,11 @@ for (var i = 1; i < 101; i++) {
   levelDropdown.appendChild(optionEl);
 }
 
+levelDropdown.addEventListener('change', function() {
+  console.log(levelDropdown.value);
+  locationDropdown.options.length = 0;
 
-
+var selectedLevel = levelDropdown.value;
   var zoneList = 'https://us.api.battle.net/wow/zone/?locale=en_US&apikey='+ key;
   $.ajax({
     url: zoneList
@@ -32,18 +34,22 @@ for (var i = 1; i < 101; i++) {
     console.log(zoneListData);
 
     for (var i = 0; i < zoneListData.zones.length; i++) {
-
+      var minLevel = zoneListData.zones[i].advisedMinLevel;
+      var maxLevel = zoneListData.zones[i].advisedMaxLevel;
+      if(selectedLevel >= minLevel && selectedLevel <= maxLevel){
       var name = zoneListData.zones[i].name;
       var optionEl = document.createElement('option');
       optionEl.innerHTML = name;
       optionEl.value = zoneListData.zones[i].id;
       locationDropdown.appendChild(optionEl);
     }
+  }
+
   }).fail(function(zoneListData){
     console.log(zoneListData);
   }).always(function(zoneListData){
   })//ajax one
-
+})
   var bossList = 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey='+ key;
   $.ajax({
     url: bossList
@@ -102,8 +108,3 @@ for (var i = 1; i < 101; i++) {
 // //thumbnail <region> reffers to the server region not the realm
 // http:// <region> + .battle.net/static-render/ + <region> + / + <the string you got from API as thumbnail>
 //   //      us                                      us
-
-
-
-
-}
