@@ -2,6 +2,7 @@ var bossDropdown = document.querySelector('#dropdown');
 var rawTemplate = document.querySelector('#template').innerHTML;
 var template = Handlebars.compile(rawTemplate);
 var bossDisplay = document.querySelector('.display');
+var locationDropdown = document.querySelector('#locationDropdown');
 var rawZoneTemplate = document.querySelector('#zoneTemplate').innerHTML;
 var zoneTemplate = Handlebars.compile(rawZoneTemplate);
 var zoneDisplay = document.querySelector('.zoneDisplay');
@@ -9,7 +10,24 @@ var zoneDisplay = document.querySelector('.zoneDisplay');
 window.onload = function (){
 console.log("loaded");
 
+  var zoneList = 'https://us.api.battle.net/wow/zone/?locale=en_US&apikey='+ key;
+  $.ajax({
+    url: zoneList
+  }).done(function(zoneListData){
+    console.log(zoneListData);
 
+    for (var i = 0; i < zoneListData.zones.length; i++) {
+
+      var name = zoneListData.zones[i].name;
+      var optionEl = document.createElement('option');
+      optionEl.innerHTML = name;
+      optionEl.value = zoneListData.zones[i].id;
+      locationDropdown.appendChild(optionEl);
+    }
+  }).fail(function(zoneListData){
+    console.log(zoneListData);
+  }).always(function(zoneListData){
+  })//ajax one
 
   var bossList = 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey='+ key;
   $.ajax({
