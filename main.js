@@ -25,6 +25,7 @@ for (var i = 15; i < 101; i++) {
 levelDropdown.addEventListener('change', function() {
   console.log(levelDropdown.value);
   locationDropdown.options.length = 0;
+  dropdown.options.length = 0;
 
 var selectedLevel = levelDropdown.value;
   var zoneList = 'https://us.api.battle.net/wow/zone/?locale=en_US&apikey='+ key;
@@ -115,17 +116,7 @@ locationDropdown.addEventListener('change', function() {
     // var zoneTag = document.querySelector('#zoneTag');
     var zone = bossData.zoneId;
 
-  //   $.ajax({
-  //     url: 'https://us.api.battle.net/wow/zone/'+ zone +'?locale=en_US&apikey=' + key
-  //   }).done(function(zoneData){
-  //     console.log('zone up');
-  //     console.log(zoneData);
-  //     var html = zoneTemplate(zoneData);
-  //     zoneDisplay.innerHTML = html;
-  //
-  //   })
-  //
-  //
+
   }).fail(function(bossData){
     console.log(bossData);
   })//ajax 2
