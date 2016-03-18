@@ -1,0 +1,22 @@
+*{
+
+}
+
+.zoneDisplay{
+  background-color: #10A378;
+  border: 5px solid black;
+  width: 400px;
+  height: 300px  auto;
+  padding: 10px;
+  margin: 10px;
+  visibility: hidden;
+}
+.display{
+  background-color: #10A378;
+  border: 5px solid black;
+  width: 400px;
+  height: 300px  auto;
+  padding: 10px;
+  margin: 10px;
+  visibility: hidden;
+}

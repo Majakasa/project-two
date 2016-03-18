@@ -45,6 +45,8 @@ var selectedLevel = levelDropdown.value;
       locationDropdown.appendChild(optionEl);
       zoneDisplay.innerHTML = null;
       bossDisplay.innerHTML = null;
+      bossDisplay.style.visibility='hidden'
+      zoneDisplay.style.visibility='hidden'
       }
     }
 
@@ -74,6 +76,8 @@ locationDropdown.addEventListener('change', function() {
         optionEl.innerHTML = name;
         optionEl.value = zoneData.bosses[i].id;
         dropdown.appendChild(optionEl);
+        zoneDisplay.style.visibility='visible'
+        bossDisplay.style.visibility='hidden'
         bossDisplay.innerHTML = null;
 
       }
@@ -115,6 +119,7 @@ locationDropdown.addEventListener('change', function() {
     bossDisplay.innerHTML = html;
     // var zoneTag = document.querySelector('#zoneTag');
     var zone = bossData.zoneId;
+    bossDisplay.style.visibility='visible'
 
 
   }).fail(function(bossData){
