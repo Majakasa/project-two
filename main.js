@@ -9,19 +9,7 @@ var zoneDisplay = document.querySelector('.zoneDisplay');
 window.onload = function (){
 console.log("loaded");
 
-  function createRadioElement(elem, value, checked) {
-    for (var i = 0; i < bossData.bosses.length; i++) {
 
-      var name = bossData.bosses[i].name;
-    var input = document.createElement('input');
-        input.type = 'radio';
-        input.value = value;
-        if (checked) {
-            input.checked = 'checked';
-        }
-
-  elem.parentNode.insertBefore(input, elem.nextSibling);
-}
 
   var bossList = 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey='+ key;
   $.ajax({
@@ -61,7 +49,7 @@ console.log("loaded");
     }).done(function(zoneData){
       console.log('zone up');
       console.log(zoneData);
-      var html = zoneTemplate( );
+      var html = zoneTemplate(zoneData);
       zoneDisplay.innerHTML = html;
 
     })
@@ -81,53 +69,6 @@ console.log("loaded");
 // //thumbnail <region> reffers to the server region not the realm
 // http:// <region> + .battle.net/static-render/ + <region> + / + <the string you got from API as thumbnail>
 //   //      us                                      us
-// http://render-api-us.worldofwarcraft.com/static-render/us/medivh/210/139817938-avatar.jpg
-// https://us.api.battle.net/wow/auction/data/Dunemaul?locale=en_US&apikey=c6ynev23bmuh52seyjn8yt6xnwyth5ty
-//   $.ajax({
-//     url: 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey=c6ynev23bmuh52seyjn8yt6xnwyth5ty'
-//   // url:  'http://us.battle.net/api/wow/character/winterhoof/Eilee?jsonp=foo'
-//
-//
-//
-//
-//
-//   }).done(function(data){
-//     console.log(data);
-//   // console.log(data.files[0].url);
-//   console.log("yay");
-//
-//  // var auctionDataURL = data.files[0].url;
-//
-//
-//
-//   // var auctionHouseDataQ = data.files[0].url;
-//   //     $.ajax({
-//   //       async: false,
-//   //       dataType: 'jsonp',
-//   //       jsonp : 'jsonp',
-//   //       type: 'GET',
-//   //       url: auctionHouseDataQ
-//               // http://auction-api-us.worldofwarcraft.com/auction-data/ad09238337ad5f5aa1d2aae04af6d849/auctions.json
-//         // callback: 'jsonp',
-//         // jsonp: 'callback'
-//
-//         // Origin: 'https://us.api.battle.net/',
-//         // AccessControlAllowOrigin: 'https://us.api.battle.net/'
-//
-// // http://auction-api-us.worldofwarcraft.com/auction-data/ad09238337ad5f5aa1d2aae04af6d849/auctions.jsonp=?
-//
-//
-//       // }).done(function(data){
-//       //     console.log("step 2")
-//       //
-//       //
-//       // }).fail(function(data){
-//       // console.log("nope 2");
-//       // });
-//   }).fail(function(data){
-//   console.log("nope");
-// });
-
 
 
 
