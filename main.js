@@ -6,9 +6,24 @@ var locationDropdown = document.querySelector('#locationDropdown');
 var rawZoneTemplate = document.querySelector('#zoneTemplate').innerHTML;
 var zoneTemplate = Handlebars.compile(rawZoneTemplate);
 var zoneDisplay = document.querySelector('.zoneDisplay');
+var levelDropdown = document.querySelector('#levelDropdown');
 
 window.onload = function (){
 console.log("loaded");
+
+
+// if(selected >= advisedMinLevel  selected = advisedMaxLevel)
+
+for (var i = 1; i < 101; i++) {
+
+  var name = i;
+  var optionEl = document.createElement('option');
+  optionEl.innerHTML = name;
+  optionEl.value = i;
+  levelDropdown.appendChild(optionEl);
+}
+
+
 
   var zoneList = 'https://us.api.battle.net/wow/zone/?locale=en_US&apikey='+ key;
   $.ajax({
