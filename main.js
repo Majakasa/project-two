@@ -42,6 +42,8 @@ var selectedLevel = levelDropdown.value;
       optionEl.innerHTML = name;
       optionEl.value = zoneListData.zones[i].id;
       locationDropdown.appendChild(optionEl);
+      zoneDisplay.innerHTML = null;
+      bossDisplay.innerHTML = null;
       }
     }
 
@@ -66,9 +68,12 @@ locationDropdown.addEventListener('change', function() {
       for (var i = 0; i < zoneData.bosses.length; i++) {
         var name = zoneData.bosses[i].name;
         var optionEl = document.createElement('option');
+        // var optionOne = document.createElement('option');
+        // optionOne.setAttribute('selected disabled');
         optionEl.innerHTML = name;
         optionEl.value = zoneData.bosses[i].id;
         dropdown.appendChild(optionEl);
+        bossDisplay.innerHTML = null;
 
       }
   })
@@ -97,7 +102,7 @@ locationDropdown.addEventListener('change', function() {
   // }).always(function(bossData){
   // })//ajax one
   //
-  var submit = document.querySelector('#submit')
+
   dropdown.addEventListener('change', function(){
 
 
