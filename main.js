@@ -7,7 +7,7 @@ var rawZoneTemplate = document.querySelector('#zoneTemplate').innerHTML;
 var zoneTemplate = Handlebars.compile(rawZoneTemplate);
 var zoneDisplay = document.querySelector('.zoneDisplay');
 var levelDropdown = document.querySelector('#levelDropdown');
-
+var submit = document.querySelector('#submit')
 
 
 
@@ -71,8 +71,6 @@ locationDropdown.addEventListener('change', function() {
       for (var i = 0; i < zoneData.bosses.length; i++) {
         var name = zoneData.bosses[i].name;
         var optionEl = document.createElement('option');
-        // var optionOne = document.createElement('option');
-        // optionOne.setAttribute('selected disabled');
         optionEl.innerHTML = name;
         optionEl.value = zoneData.bosses[i].id;
         dropdown.appendChild(optionEl);
@@ -80,35 +78,11 @@ locationDropdown.addEventListener('change', function() {
         bossDisplay.style.visibility='hidden'
         bossDisplay.innerHTML = null;
 
-      }
-  })
-})
+      };
+  });
+});
 
-
-
-
-  // var bossList = 'https://us.api.battle.net/wow/boss/?locale=en_US&apikey='+ key;
-  // $.ajax({
-  //   url: bossList
-  // }).done(function(bossData){
-  //   console.log(bossData);
-  //   console.log(bossData.bosses[0].description);
-  //
-  //   for (var i = 0; i < bossData.bosses.length; i++) {
-  //
-  //     var name = bossData.bosses[i].name;
-  //     var optionEl = document.createElement('option');
-  //     optionEl.innerHTML = name;
-  //     optionEl.value = bossData.bosses[i].id;
-  //     bossDropdown.appendChild(optionEl);
-  //   }
-  // }).fail(function(bossData){
-  //   console.log(bossData);
-  // }).always(function(bossData){
-  // })//ajax one
-  //
-
-  dropdown.addEventListener('change', function(){
+dropdown.addEventListener('change', function(){
 
 
   $.ajax({
@@ -124,9 +98,9 @@ locationDropdown.addEventListener('change', function() {
 
   }).fail(function(bossData){
     console.log(bossData);
-  })//ajax 2
+  });//ajax 2
 
-  })//submit button
+});//submit button
 
 // timestamp converstion
 // var myDate = new Date( epoch date * 1000);

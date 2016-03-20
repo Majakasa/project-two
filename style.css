@@ -1,18 +1,53 @@
 *{
-
+box-sizing: border-box;
+}
+body{
+  background:url("./images/WorldMap-World.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
 }
 
+.displayContainer{
+  display: flex;
+}
+.topBar{
+  background: #F5CA53;
+  background-color: rgba(4, 3, 0, 0.6);
+}
+label{
+  color: white;
+}
+#levelDropdown{
+  background: white;
+}
+#locationDropdown{
+  background: white
+}
+#dropdown{
+  background: white
+}
 .zoneDisplay{
-  background-color: #10A378;
-  border: 5px solid black;
+  background:url("./images/53b444ea99a7b8c7e90631ea6e81e877.jpg") no-repeat center center fixed;  border: 5px solid black;
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
   width: 400px;
   height: 300px  auto;
   padding: 10px;
   margin: 10px;
   visibility: hidden;
 }
+
+
 .display{
-  background-color: #10A378;
+  background:url("./images/53b444ea99a7b8c7e90631ea6e81e877.jpg") no-repeat center center fixed;  border: 5px solid black;
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
   border: 5px solid black;
   width: 400px;
   height: 300px  auto;

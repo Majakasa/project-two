@@ -6,34 +6,41 @@
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
+    <div class="bodyWrap">
 
-    <label> Level
-      <select name="levelDropdown" id="levelDropdown">
-        <option value="choose-one" selected disabled>Choose:</option>
-      </select>
-    </label>
+      <div class="topBar">
+        <label> Level
+          <select name="levelDropdown" id="levelDropdown">
+            <option value="choose-one" selected disabled>Choose:</option>
+          </select>
+        </label>
 
-    <label> Dungeons
-      <select name="locationDropdown" id="locationDropdown">
-        <option value="choose-one" selected disabled>Choose:</option>
-      </select>
-    </label>
+        <label> Dungeons
+          <select name="locationDropdown" id="locationDropdown">
+            <option value="choose-one" selected disabled>Choose:</option>
+          </select>
+        </label>
 
-      <label> Boss List
-        <select name="dropdown" id="dropdown">
-          <option value="choose-one" selected disabled>Bosses:</option>
-        </select>
-      </label>
+          <label> Boss List
+            <select name="dropdown" id="dropdown">
+              <option value="choose-one" selected disabled>Bosses:</option>
+            </select>
+          </label>
+          <button id="submit" type="submit" name="button">Submit</button>
+      </div>
 
-
-      <div class="zoneDisplay"></div>
-      <div class="display"></div>
+      <div class="displayContainer">
+        <div class="zoneDisplay"></div>
+        <div class="display"></div>
+      </div>
 
       <script id="template" type="text/x-handlebars-template">
           <p>Name: {{name}}</p>
           <p>Level: {{level}}</p>
           <p>Health: {{health}}</p>
           <p>Description: {{description}}</p>
+
+
           <!-- <p id="zoneTag">Zone:{{zoneData.name}}</p> -->
       </script>
       <script id="zoneTemplate" type="text/x-handlebars-template">
@@ -54,5 +61,6 @@
     <script type="text/javascript" src="main.js">
 
     </script>
+    </div>
   </body>
 </html>
