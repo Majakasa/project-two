@@ -1,11 +1,11 @@
 var bossDropdown = document.querySelector('#dropdown');
 var rawTemplate = document.querySelector('#template').innerHTML;
 var template = Handlebars.compile(rawTemplate);
-var bossDisplay = document.querySelector('.display');
+var displayA = document.querySelector('.display');
 var locationDropdown = document.querySelector('#locationDropdown');
 var rawZoneTemplate = document.querySelector('#zoneTemplate').innerHTML;
 var zoneTemplate = Handlebars.compile(rawZoneTemplate);
-var zoneDisplay = document.querySelector('.zoneDisplay');
+var displayB = document.querySelector('.zoneDisplay');
 var levelDropdown = document.querySelector('#levelDropdown');
 var petDropdown = document.querySelector('#petDropdown');
 var petLevelDropdown = document.querySelector('#petLevelDropdown');
@@ -68,10 +68,10 @@ var selectedLevel = levelDropdown.value;
       optionEl.innerHTML = name;
       optionEl.value = zoneListData.zones[i].id;
       locationDropdown.appendChild(optionEl);
-      zoneDisplay.innerHTML = null;
-      bossDisplay.innerHTML = null;
-      bossDisplay.style.visibility='hidden'
-      zoneDisplay.style.visibility='hidden'
+      displayB.innerHTML = null;
+      displayA.innerHTML = null;
+      displayA.style.visibility='hidden'
+      displayB.style.visibility='hidden'
       }
     }
 
@@ -92,16 +92,16 @@ locationDropdown.addEventListener('change', function() {
     console.log('zone up');
     console.log(zoneData);
     var html = zoneTemplate(zoneData);
-    zoneDisplay.innerHTML = html;
+    displayB.innerHTML = html;
       for (var i = 0; i < zoneData.bosses.length; i++) {
         var name = zoneData.bosses[i].name;
         var optionEl = document.createElement('option');
         optionEl.innerHTML = name;
         optionEl.value = zoneData.bosses[i].id;
         dropdown.appendChild(optionEl);
-        zoneDisplay.style.visibility='visible'
-        bossDisplay.style.visibility='hidden'
-        bossDisplay.innerHTML = null;
+        displayB.style.visibility='visible'
+        displayA.style.visibility='hidden'
+        displayA.innerHTML = null;
 
       };
   });
@@ -115,10 +115,10 @@ dropdown.addEventListener('change', function(){
 
   }).done(function(bossData){
     var html = template(bossData);
-    bossDisplay.innerHTML = html;
+    displayA.innerHTML = html;
     // var zoneTag = document.querySelector('#zoneTag');
     var zone = bossData.zoneId;
-    bossDisplay.style.visibility='visible'
+    displayA.style.visibility='visible'
 
 
   }).fail(function(bossData){
@@ -157,40 +157,31 @@ dropdown.addEventListener('change', function(){
       console.log('pets up');
       console.log(petData);
       var html = petTemplate(petData);
-      zoneDisplay.innerHTML = html;
-      zoneDisplay.style.visibility='visible'
-      // var html = petStatTemplate(petData);
-      // bossDisplay.innerHTML = html;
-      // bossDisplay.style.visibility='visible'
+      displayB.innerHTML = html;
+      displayB.style.visibility='visible'
+      displayA.style.visibility='hidden'
 
     });
-
   });
-var petLevel = undefined;
-var petQuality = undefined;
+
 petLevelDropdown.addEventListener('change', function() {
-  if(petLevel = undefined){
-    petLevel = 1
-  }
-  else{
-    petLevel = petLevelDropdown.value;
-  }
-  if(petQuality = undefined){
-    petQuality = 1
-  }
-  else{
-    petQuality = qualityDropdown.value;
-  }
 
   $.ajax({
-    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevel + '&breedId=5&qualityId=' + petQuality + '&locale=en_US&apikey=' + key
+    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevelDropdown.value + '&breedId=5&qualityId=' + qualityDropdown.value + '&locale=en_US&apikey=' + key
   }).done(function(petStatsData){
-
-    console.log('pets up');
-    console.log(petStatsData);
     var html = petStatTemplate(petStatsData);
-    bossDisplay.innerHTML = html;
-    bossDisplay.style.visibility='visible'
+    displayA.innerHTML = html;
+    displayA.style.visibility='visible'
+  });
+});
+qualityDropdown.addEventListener('change', function() {
+
+  $.ajax({
+    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevelDropdown.value + '&breedId=5&qualityId=' + qualityDropdown.value + '&locale=en_US&apikey=' + key
+  }).done(function(petStatsData){
+    var html = petStatTemplate(petStatsData);
+    displayA.innerHTML = html;
+    displayA.style.visibility='visible'
   });
 });
 

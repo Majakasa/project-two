@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>WoW Dungeon Explorer</title>
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Calligraffitti' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class="bodyWrap">
@@ -26,9 +27,9 @@
               <option value="choose-one" selected disabled>Bosses:</option>
             </select>
           </label>
-          <button id="submit" type="submit" name="button">Submit</button>
-      </div>
 
+      </div>
+      <div class="topBar">
         <label> Vanity Pets
           <select name="petDropdown" id="petDropdown">
             <option value="choose-one" selected disabled>Choose:</option>
@@ -37,16 +38,17 @@
 
         <label> Level
           <select name="petLevelDropdown" id="petLevelDropdown">
-            <option value="choose-one" selected disabled>Choose:</option>
+
           </select>
         </label>
 
         <label> Quality
           <select name="qualityDropdown" id="qualityDropdown">
-            <option value="choose-one" selected disabled>Choose:</option>
+
           </select>
         </label>
 
+      </div>
       <div class="displayContainer">
         <div class="zoneDisplay"></div>
         <div class="display"></div>
@@ -82,10 +84,11 @@
           </ul>
       </script>
       <script id="petStatTemplate" type="text/x-handlebars-template">
-          <p>Level: {{level}}</p>
-          <p>Health: {{health}}</p>
-          <p>Power: {{power}}</p>
-          <p>Speed: {{speed}}</p>
+          <p>Statistics</p>
+          <p> Level: {{level}}</p>
+          <p> Health: {{health}}</p>
+          <p> Power: {{power}}</p>
+          <p> Speed: {{speed}}</p>
       </script>
 
 
