@@ -53,7 +53,7 @@ levelDropdown.addEventListener('change', function() {
   dropdown.options.length = 0;
 
 var selectedLevel = levelDropdown.value;
-  var zoneList = 'https://us.api.battle.net/wow/zone/?locale=en_US&apikey='+ key;
+  var zoneList = 'https://us.api.battle.net/wow/zone/?locale=en_US&apikey='+ API_KEY;
   $.ajax({
     url: zoneList
   }).done(function(zoneListData){
@@ -87,7 +87,7 @@ locationDropdown.addEventListener('change', function() {
   dropdown.options.length = 0;
 
   $.ajax({
-    url: 'https://us.api.battle.net/wow/zone/'+ locationDropdown.value +'?locale=en_US&apikey=' + key
+    url: 'https://us.api.battle.net/wow/zone/'+ locationDropdown.value +'?locale=en_US&apikey=' + API_KEY
   }).done(function(zoneData){
     console.log('zone up');
     console.log(zoneData);
@@ -111,7 +111,7 @@ dropdown.addEventListener('change', function(){
 
 
   $.ajax({
-    url: 'https://us.api.battle.net/wow/boss/'+ bossDropdown.value +'?locale=en_US&apikey=' + key
+    url: 'https://us.api.battle.net/wow/boss/'+ bossDropdown.value +'?locale=en_US&apikey=' + API_KEY
 
   }).done(function(bossData){
     var html = template(bossData);
@@ -131,7 +131,7 @@ dropdown.addEventListener('change', function(){
 
 // populate pet dropdown
   $.ajax({
-    url: 'https://us.api.battle.net/wow/pet/?locale=en_US&apikey=' + key
+    url: 'https://us.api.battle.net/wow/pet/?locale=en_US&apikey=' + API_KEY
   }).done(function(petData){
     console.log('pets up');
     console.log(petData);
@@ -152,7 +152,7 @@ dropdown.addEventListener('change', function(){
     console.log(petDropdown.value);
 
     $.ajax({
-      url: 'https://us.api.battle.net/wow/pet/species/' + petDropdown.value + '?locale=en_US&apikey=' + key
+      url: 'https://us.api.battle.net/wow/pet/species/' + petDropdown.value + '?locale=en_US&apikey=' + API_KEY
     }).done(function(petData){
       console.log('pets up');
       console.log(petData);
@@ -167,7 +167,7 @@ dropdown.addEventListener('change', function(){
 petLevelDropdown.addEventListener('change', function() {
 
   $.ajax({
-    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevelDropdown.value + '&breedId=5&qualityId=' + qualityDropdown.value + '&locale=en_US&apikey=' + key
+    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevelDropdown.value + '&breedId=5&qualityId=' + qualityDropdown.value + '&locale=en_US&apikey=' + API_KEY
   }).done(function(petStatsData){
     var html = petStatTemplate(petStatsData);
     displayA.innerHTML = html;
@@ -177,7 +177,7 @@ petLevelDropdown.addEventListener('change', function() {
 qualityDropdown.addEventListener('change', function() {
 
   $.ajax({
-    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevelDropdown.value + '&breedId=5&qualityId=' + qualityDropdown.value + '&locale=en_US&apikey=' + key
+    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevelDropdown.value + '&breedId=5&qualityId=' + qualityDropdown.value + '&locale=en_US&apikey=' + API_KEY
   }).done(function(petStatsData){
     var html = petStatTemplate(petStatsData);
     displayA.innerHTML = html;
