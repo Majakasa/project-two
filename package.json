@@ -1,0 +1,23 @@
+{
+  "name": "project-two",
+  "version": "1.0.0",
+  "description": "Uses World of warcraft boss APIs and vanity pet APIs to create an easy way to search for and provide information on dungeons and vanity pets.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Majakasa/project-two.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Majakasa/project-two/issues"
+  },
+  "homepage": "https://github.com/Majakasa/project-two#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
