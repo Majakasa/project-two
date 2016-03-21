@@ -8,7 +8,12 @@ var zoneTemplate = Handlebars.compile(rawZoneTemplate);
 var zoneDisplay = document.querySelector('.zoneDisplay');
 var levelDropdown = document.querySelector('#levelDropdown');
 var petDropdown = document.querySelector('#petDropdown');
+var petLevelDropdown = document.querySelector('#petLevelDropdown');
 var qualityDropdown = document.querySelector('#qualityDropdown');
+var rawPetTemplate = document.querySelector('#petTemplate').innerHTML;
+var petTemplate = Handlebars.compile(rawPetTemplate);
+var rawPetStatTemplate = document.querySelector('#petStatTemplate').innerHTML;
+var petStatTemplate = Handlebars.compile(rawPetStatTemplate);
 
 var submit = document.querySelector('#submit');
 
@@ -24,6 +29,23 @@ for (var i = 15; i < 101; i++) {
   optionEl.value = i;
   levelDropdown.appendChild(optionEl);
 }
+for (var i = 1; i < 26; i++) {
+
+  var name = i;
+  var optionEl = document.createElement('option');
+  optionEl.innerHTML = name;
+  optionEl.value = i;
+  petLevelDropdown.appendChild(optionEl);
+}
+for (var i = 1; i < 6; i++) {
+
+  var name = i;
+  var optionEl = document.createElement('option');
+  optionEl.innerHTML = name;
+  optionEl.value = i;
+  qualityDropdown.appendChild(optionEl);
+}
+
 
 levelDropdown.addEventListener('change', function() {
   console.log(levelDropdown.value);
@@ -107,7 +129,7 @@ dropdown.addEventListener('change', function(){
 
 
 
-
+// populate pet dropdown
   $.ajax({
     url: 'https://us.api.battle.net/wow/pet/?locale=en_US&apikey=' + key
   }).done(function(petData){
@@ -121,14 +143,55 @@ dropdown.addEventListener('change', function(){
         optionEl.innerHTML = name;
         optionEl.value = petData.pets[i].stats.speciesId;
         petDropdown.appendChild(optionEl);
-        // zoneDisplay.style.visibility='visible'
-        // bossDisplay.style.visibility='hidden'
-        // bossDisplay.innerHTML = null;
-      
+
+
       };
   });
+
   petDropdown.addEventListener('change', function() {
     console.log(petDropdown.value);
+
+    $.ajax({
+      url: 'https://us.api.battle.net/wow/pet/species/' + petDropdown.value + '?locale=en_US&apikey=' + key
+    }).done(function(petData){
+      console.log('pets up');
+      console.log(petData);
+      var html = petTemplate(petData);
+      zoneDisplay.innerHTML = html;
+      zoneDisplay.style.visibility='visible'
+      // var html = petStatTemplate(petData);
+      // bossDisplay.innerHTML = html;
+      // bossDisplay.style.visibility='visible'
+
+    });
+
+  });
+var petLevel = undefined;
+var petQuality = undefined;
+petLevelDropdown.addEventListener('change', function() {
+  if(petLevel = undefined){
+    petLevel = 1
+  }
+  else{
+    petLevel = petLevelDropdown.value;
+  }
+  if(petQuality = undefined){
+    petQuality = 1
+  }
+  else{
+    petQuality = qualityDropdown.value;
+  }
+
+  $.ajax({
+    url: ' https://us.api.battle.net/wow/pet/stats/' + petDropdown.value + '?level=' + petLevel + '&breedId=5&qualityId=' + petQuality + '&locale=en_US&apikey=' + key
+  }).done(function(petStatsData){
+
+    console.log('pets up');
+    console.log(petStatsData);
+    var html = petStatTemplate(petStatsData);
+    bossDisplay.innerHTML = html;
+    bossDisplay.style.visibility='visible'
+  });
 });
 
 // https://us.api.battle.net/wow/pet/stats/258?level=25&breedId=5&qualityId=5&locale=en_US&apikey=c6ynev23bmuh52seyjn8yt6xnwyth5ty

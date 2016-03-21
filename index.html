@@ -29,16 +29,23 @@
           <button id="submit" type="submit" name="button">Submit</button>
       </div>
 
-      <label> Vanity Pets
-        <select name="petDropdown" id="petDropdown">
-          <option value="choose-one" selected disabled>Choose:</option>
-        </select>
-      </label>
-      <label> Quality
-        <select name="qualityDropdown" id="qualityDropdown">
-          <option value="choose-one" selected disabled>Choose:</option>
-        </select>
-      </label>
+        <label> Vanity Pets
+          <select name="petDropdown" id="petDropdown">
+            <option value="choose-one" selected disabled>Choose:</option>
+          </select>
+        </label>
+
+        <label> Level
+          <select name="petLevelDropdown" id="petLevelDropdown">
+            <option value="choose-one" selected disabled>Choose:</option>
+          </select>
+        </label>
+
+        <label> Quality
+          <select name="qualityDropdown" id="qualityDropdown">
+            <option value="choose-one" selected disabled>Choose:</option>
+          </select>
+        </label>
 
       <div class="displayContainer">
         <div class="zoneDisplay"></div>
@@ -62,6 +69,25 @@
           <p>Recommended Level: {{advisedMinLevel}}-{{advisedMaxLevel}}</p>
           <!-- <p id="zoneTag">Zone:{{zoneData.name}}</p> -->
       </script>
+      <script id="petTemplate" type="text/x-handlebars-template">
+          <p>Pet: {{name}}</p>
+          <p>Pet Description: {{description}}</p>
+          <p>How to obtain: {{source}}</p>
+
+          <p>Abilities:</p>
+          <ul>
+            {{#each abilities}}
+              <li>{{this.name}}</li>
+            {{/each}}
+          </ul>
+      </script>
+      <script id="petStatTemplate" type="text/x-handlebars-template">
+          <p>Level: {{level}}</p>
+          <p>Health: {{health}}</p>
+          <p>Power: {{power}}</p>
+          <p>Speed: {{speed}}</p>
+      </script>
+
 
 
 
